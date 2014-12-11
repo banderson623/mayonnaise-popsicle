@@ -9,7 +9,8 @@
     <audio src="sounds/yum.mp3"></audio>
     <audio src="sounds/yum2.mp3"></audio>
     <audio src="sounds/yum3.mp3"></audio>
-
+    <audio src="sounds/yum4.mp3"></audio>
+    <audio src="sounds/yum5.mp3"></audio>
 
     <div id="container">
       <header>
@@ -59,7 +60,7 @@
 
         var sounds = document.getElementsByTagName('audio');
         var playSound = function(){
-          var index = Math.floor(Math.random()*2.999);
+          var index = jankLevel % 5;
           sounds[index].currentTime = 0;
           sounds[index].play();
         };
