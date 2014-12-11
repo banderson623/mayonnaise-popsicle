@@ -30,8 +30,9 @@ body {
 }
 
 button {
-  margin-top:1rem;
-  width: 100%;
+  margin:2rem auto;
+  display:block;
+  width: 80%;
   padding: 1rem;
   font-family: 'Dancing Script', cursive;
   font-weight:400;
@@ -40,6 +41,7 @@ button {
   border:0;
   color: #fff;
   box-shadow: 5px 5px 0 #035E7B;
+  border-radius: 5px;
 }
 
 button:active {
