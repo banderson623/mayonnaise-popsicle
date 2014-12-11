@@ -31,7 +31,7 @@
       </article>
 
       <button id="add-jank">More Jank !</button>
-
+      <p id="jank-level"></p>
 
       <div class="next">Read Next: Lauren Katz's adventure making bologna and nutella sandwiches with President Obama.</div>
 
@@ -43,9 +43,10 @@
       if ( 'querySelector' in document && 'addEventListener' in window ) {
         var jankLevel = 0;
         var jankButton = document.querySelector('#add-jank');
+        var jankLevelIndicator = document.querySelector('#jank-level');
         jankButton.addEventListener('click',function(){
           jankLevel++;
-          console.log(jankLevel);
+          jankLevelIndicator.innerHTML="Scroll to experience jank level " + jankLevel + (jankLevel > 4 ? " Whoa there!":'');
         });
 
         window.addEventListener('scroll',function(){

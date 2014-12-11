@@ -29,6 +29,11 @@ body {
   width: auto;
 }
 
+
+#jank-level{
+  text-align: center;
+  color: #CBBA00;
+}
 button {
   margin:2rem auto;
   display:block;
@@ -42,6 +47,8 @@ button {
   color: #fff;
   box-shadow: 5px 5px 0 #035E7B;
   border-radius: 5px;
+  outline: 0;
+  cursor: pointer;
 }
 
 button:active {
