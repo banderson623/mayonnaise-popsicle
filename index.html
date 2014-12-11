@@ -6,6 +6,10 @@
     <link href='http://fonts.googleapis.com/css?family=Dancing+Script:400,700|Roboto:400,700,300' rel='stylesheet' type='text/css'>    <link rel="stylesheet" type="text/css" href="style.css" />
   </head>
   <body id="the-body">
+    <audio src="sounds/yum.mp3"></audio>
+    <audio src="sounds/yum2.mp3"></audio>
+    <audio src="sounds/yum3.mp3"></audio>
+
 
     <div id="container">
       <header>
@@ -52,10 +56,19 @@
         var jankLevelIndicator = document.querySelector('#jank-level');
         var moreInfo = document.querySelector('#more-resources');
         moreInfo.style.display="none";
+
+        var sounds = document.getElementsByTagName('audio');
+        var playSound = function(){
+          var index = Math.floor(Math.random()*2.999);
+          sounds[index].currentTime = 0;
+          sounds[index].play();
+        };
+
         jankButton.addEventListener('click',function(){
           moreInfo.style.display = "block";
           jankLevel++;
           jankLevelIndicator.innerHTML="Scroll to experience jank level " + jankLevel + (jankLevel > 4 ? " Whoa there!":'');
+          playSound();
         });
 
 
