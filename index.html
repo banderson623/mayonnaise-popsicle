@@ -33,8 +33,14 @@
       <button id="add-jank">More Jank !</button>
       <p id="jank-level"></p>
 
-      <div class="next">Read Next: Lauren Katz's adventure making bologna and nutella sandwiches with President Obama.</div>
+      <ul id="more-resources">
+        <li>More Resources:</li>
+        <li><a href="http://jankfree.org/">Jank Free.org/</a></li>
+        <li><a href="http://addyosmani.com/blog/making-a-site-jank-free/">Video: Gone In 60fps - Making A Site Jank-Free/</a></li>
+        <li><a href="http://addyosmani.com/blog/devtools-visually-re-engineering-css-for-faster-paint-times/">Css and Painting</a></li>
+      </ul>
 
+      <div class="next">Read Next: Lauren Katz's adventure making bologna and nutella sandwiches with President Obama.</div>
     </div>
 
     <script type="text/javascript">
@@ -44,10 +50,14 @@
         var jankLevel = 0;
         var jankButton = document.querySelector('#add-jank');
         var jankLevelIndicator = document.querySelector('#jank-level');
+        var moreInfo = document.querySelector('#more-resources');
+        moreInfo.style.display="none";
         jankButton.addEventListener('click',function(){
+          moreInfo.style.display = "block";
           jankLevel++;
           jankLevelIndicator.innerHTML="Scroll to experience jank level " + jankLevel + (jankLevel > 4 ? " Whoa there!":'');
         });
+
 
         window.addEventListener('scroll',function(){
           if(jankLevel > 0){
@@ -66,13 +76,6 @@
               listItems[i].style.marginLeft = left + "px";
             }
 
-            if(jankLevel > 2){
-              var max = Math.ceil(Math.random()*(250 * jankLevel));
-              for(var k = 0; k < max ; k++){
-                console.log("this does taste good", k);
-              }
-            }
-
             if(jankLevel > 1){
               var container = document.querySelector('#the-body');
               var r,g,b;
@@ -82,6 +85,21 @@
               rgba = "rgba("+r+","+g+","+b+",0.015)";
               container.style.background = rgba;
             }
+
+            if(jankLevel > 2){
+              var images = document.getElementsByTagName('img');
+              for(i = 0; i < images.length; i++){
+                images[i].setAttribute("style","-webkit-filter: blur("+ (Math.random() * 100 )+"px)");
+              }
+            }
+
+            if(jankLevel > 3){
+              var max = Math.ceil(Math.random()*(250 * jankLevel));
+              for(var k = 0; k < max ; k++){
+                console.log("this does taste good", k);
+              }
+            }
+
           }
         });
       }
