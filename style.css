@@ -21,6 +21,10 @@ body {
   display: block;
 }
 
+#container header {
+  margin-top:1rem;
+}
+
 #container header img{
   width: auto;
 }
