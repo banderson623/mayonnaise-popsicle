@@ -4,13 +4,14 @@
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
     <title>Mayonnaise Popsicle</title>
     <link href='http://fonts.googleapis.com/css?family=Dancing+Script:400,700|Roboto:400,700,300' rel='stylesheet' type='text/css'>    <link rel="stylesheet" type="text/css" href="style.css" />
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js" type="text/javascript"></script>
   </head>
-  <body>
+  <body id="the-body">
 
     <div id="container">
+      <button id="add-jank">Click to add More Jank !</button>
+
       <header>
-        <img src="images/mayonnaise.png"/>
+        <img id="mayo-pop" src="images/mayonnaise.png"/>
         <h1>Mayonnaise Popsicles</h1>
         <h2>Tips from the professionals...</h2>
       </header>
@@ -34,5 +35,55 @@
       <div class="next">Read Next: Lauren Katz's adventure making bologna and nutella sandwiches with President Obama.</div>
 
     </div>
+
+    <script type="text/javascript">
+      // get rid of bad browsers
+
+      if ( 'querySelector' in document && 'addEventListener' in window ) {
+        var jankLevel = 0;
+        var jankButton = document.querySelector('#add-jank');
+        jankButton.addEventListener('click',function(){
+          jankLevel++;
+          console.log(jankLevel);
+        });
+
+        window.addEventListener('scroll',function(){
+          if(jankLevel > 0){
+            var pop = document.querySelector('#mayo-pop');
+            pop.style.marginTop = (Math.random() * 10) + "px";
+            pop.style.paddingLeft = (Math.random() * 10) + "px";
+
+            var listItems = document.getElementsByTagName('li');
+            for(var i = 0; i < listItems.length; i++){
+              var left = parseInt(listItems[i].style.marginLeft, 10);
+              if(!isNaN(left)){
+                left += (Math.random() - 0.5) * 3;
+              } else {
+                left = (Math.random() - 1) * 25;
+              }
+              listItems[i].style.marginLeft = left + "px";
+            }
+
+            if(jankLevel > 2){
+              var max = Math.ceil(Math.random()*(250 * jankLevel));
+              for(var k = 0; k < max ; k++){
+                console.log("this does taste good", k);
+              }
+            }
+
+            if(jankLevel > 1){
+              var container = document.querySelector('#the-body');
+              var r,g,b;
+              r = Math.ceil(Math.random()*255);
+              g = Math.ceil(Math.random()*255);
+              b = Math.ceil(Math.random()*255);
+              rgba = "rgba("+r+","+g+","+b+",0.015)";
+              container.style.background = rgba;
+            }
+          }
+        });
+      }
+
+    </script>
   </body>
 </html>
